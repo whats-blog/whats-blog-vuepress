@@ -7,7 +7,7 @@ const nextTheme = () => {
       Layout: path.resolve(__dirname, '../client/layouts/Layout.vue'),
       404: path.resolve(__dirname, '../client/layouts/404.vue')
     },
-    plugin: ['@whats-blog/vuepress-plugin-blog']
+    plugins: [require.resolve('@whats-blog/vuepress-plugin-blog')]
   }
 }
 
