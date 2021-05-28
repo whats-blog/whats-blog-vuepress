@@ -10,6 +10,8 @@ module.exports = {
    */
   description: description,
 
+  theme: '@whats-blog/vuepress-theme-next',
+
   /**
    * Extra tags to be injected to the page HTML `<head>`
    *
@@ -35,7 +37,7 @@ module.exports = {
     nav: [
       {
         text: 'Guide',
-        link: '/guide/',
+        link: '/guide/'
       },
       {
         text: 'Config',
@@ -51,20 +53,14 @@ module.exports = {
         {
           title: 'Guide',
           collapsable: false,
-          children: [
-            '',
-            'using-vue',
-          ]
+          children: ['', 'using-vue']
         }
-      ],
+      ]
     }
   },
 
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */
-  plugins: [
-    '@vuepress/plugin-back-to-top',
-    '@vuepress/plugin-medium-zoom',
-  ]
+  plugins: ['@vuepress/plugin-back-to-top', '@vuepress/plugin-medium-zoom']
 }
