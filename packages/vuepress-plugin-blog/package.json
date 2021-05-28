@@ -1,0 +1,6 @@
+{
+  "name": "@whats-blog/vuepress-plugin-blog",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "dependencies": {}
+}
