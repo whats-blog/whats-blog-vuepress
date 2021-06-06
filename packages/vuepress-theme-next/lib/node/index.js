@@ -1,11 +1,12 @@
-const path = require('path')
-
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const utils_1 = require('@vuepress/utils')
 const nextTheme = (options) => {
   return {
     name: '@whats-blog/vuepress-theme-next',
     layouts: {
-      Layout: path.resolve(__dirname, '../client/layouts/Layout.vue'),
-      404: path.resolve(__dirname, '../client/layouts/404.vue')
+      Layout: utils_1.path.resolve(__dirname, '../client/layouts/Layout.vue'),
+      404: utils_1.path.resolve(__dirname, '../client/layouts/404.vue')
     },
     plugins: [
       require.resolve('@whats-blog/vuepress-plugin-blog'),
@@ -13,5 +14,4 @@ const nextTheme = (options) => {
     ]
   }
 }
-
-module.exports = nextTheme
+exports.default = nextTheme

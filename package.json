@@ -5,15 +5,23 @@
   "main": "index.js",
   "repository": "https://github.com/whats-blog/whats-blog-vuepress",
   "scripts": {
-    "dev": "vuepress dev blog",
-    "build": "vuepress build blog"
+    "blog:dev": "vuepress dev blog",
+    "blog:build": "vuepress build blog",
+    "build": "tsc --build",
+    "clean": "pnpm clean --filter @whats-blog/* --parallel",
+    "copy": "pnpm copy --filter @whats-blog/* --parallel",
+    "copy:watch": "pnpm copy --filter @whats-blog/* --parallel -- --watch",
+    "dev": "pnpm copy:watch & pnpm build -- --watch & pnpm blog:dev"
   },
   "license": "MIT",
   "devDependencies": {
     "@whats-blog/vuepress-theme-next": "0.0.1",
+    "cpx2": "^3.0.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.4",
     "vuepress": "^2.0.0-beta.15"
   },
   "husky": {

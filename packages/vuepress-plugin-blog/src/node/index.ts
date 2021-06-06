@@ -4,4 +4,4 @@ const blogPlugin = () => {
   }
 }
 
-module.exports = blogPlugin
+export default blogPlugin
