@@ -8,7 +8,15 @@ const nextTheme = (options) => {
       404: path.resolve(__dirname, '../client/layouts/404.vue')
     },
     plugins: [
-      require.resolve('@whats-blog/vuepress-plugin-blog'),
+      [require.resolve('@whats-blog/vuepress-plugin-blog'), {
+        directories: [
+          {
+            id: 'post',
+            dirname: '_posts',
+            path: '/',
+          },
+        ],
+      }],
       [require.resolve('@vuepress/plugin-theme-data'), { themeData: options }]
     ]
   }
