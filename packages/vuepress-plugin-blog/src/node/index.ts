@@ -1,7 +1,7 @@
 import type { App } from '@vuepress/core'
 import { createPage } from '@vuepress/core'
 
-import { handleOptions } from "./handleOptions";
+import { handleOptions } from "./handle-options";
 
 const blogPlugin = (options, app: App) => {
   const {extraPages, pageEnhancers} = handleOptions(options, app);
