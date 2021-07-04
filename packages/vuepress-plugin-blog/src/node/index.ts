@@ -7,6 +7,7 @@ const blogPlugin = (options, app: App) => {
   const {extraPages, pageEnhancers} = handleOptions(options, app);
   return {
     name: '@whats-blog/vuepress-plugin-blog',
+    plugins: [require.resolve('@whats-blog/vuepress-plugin-pages')],
     extendsPageOptions(filePath: string) {
       const frontmatter = {};
       pageEnhancers.forEach(({filter, frontmatter: enhancerFrontmatter}) => {

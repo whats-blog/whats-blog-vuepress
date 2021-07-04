@@ -1,5 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
-  "references": [{ "path": "./tsconfig.esm.json" }, { "path": "./tsconfig.cjs.json" }],
+  "references": [
+    { "path": "../vuepress-plugin-pages/tsconfig.build.json" },
+    { "path": "./tsconfig.esm.json" },
+    { "path": "./tsconfig.cjs.json" }
+  ],
   "files": []
 }

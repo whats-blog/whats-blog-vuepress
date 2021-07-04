@@ -23,6 +23,12 @@ importers:
       vuepress: 2.0.0-beta.15
 
   packages/vuepress-plugin-blog:
+    specifiers:
+      '@whats-blog/vuepress-plugin-pages': 0.0.1
+    dependencies:
+      '@whats-blog/vuepress-plugin-pages': link:../vuepress-plugin-pages
+
+  packages/vuepress-plugin-pages:
     specifiers: {}
 
   packages/vuepress-theme-next:

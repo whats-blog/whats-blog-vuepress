@@ -10,5 +10,7 @@
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf lib *.tsbuildinfo"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@whats-blog/vuepress-plugin-pages": "0.0.1"
+  }
 }
