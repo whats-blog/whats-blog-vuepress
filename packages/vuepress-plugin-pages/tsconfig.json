@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@temp/@whats-blog/vuepress-plugin-pages": ["src/client/pages-data.d.ts"]
+    }
+  },
+  "include": ["./src/**/*.ts", "./__tests__"]
+}
