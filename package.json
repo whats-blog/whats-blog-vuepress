@@ -32,6 +32,9 @@
   "lint-staged": {
     "*.{html,css,js,vue,json}": [
       "prettier --write"
+    ],
+    "*.ts": [
+      "prettier --parser typescript --write"
     ]
   }
 }
