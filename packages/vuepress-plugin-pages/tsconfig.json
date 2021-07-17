@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "module": "ES2020",
     "baseUrl": ".",
     "paths": {
       "@temp/@whats-blog/vuepress-plugin-pages": ["src/client/pages-data.d.ts"]
