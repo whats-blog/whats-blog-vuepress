@@ -30,13 +30,13 @@ export function resolvePaginationConfig(
       }
       return `${indexPath}page/${index + 1}`
     },
-    filter(page: Page, id: string) {
+    filter: (page: Page, id: string) => {
       if (page.frontmatter.pagination) {
         return (page.frontmatter.pagination as any).id === id
       }
       return false
     },
-    sorter(prev: Page, next: Page) {
+    sorter: (prev: Page, next: Page) => {
       const prevDate = parseDate(prev.frontmatter.date!)
       const nextDate = parseDate(next.frontmatter.date!)
       return prevDate - nextDate
