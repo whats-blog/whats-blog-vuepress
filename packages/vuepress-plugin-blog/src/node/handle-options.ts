@@ -60,15 +60,6 @@ function handleDirectoryClassification(
 
     const { title = upperFirstChar(id) } = directory
 
-    if (indexPath) {
-      extraPages.push({
-        path: indexPath,
-        frontmatter: {
-          title
-        }
-      })
-    }
-
     pageEnhancers.push({
       filter(filePath) {
         return Boolean(filePath) && filePath!.startsWith(`${dirname}/`)
@@ -84,10 +75,7 @@ function handleDirectoryClassification(
     paginations.push({
       id,
       classifierType: ClassifierTypeEnum.DIRECTORY,
-      getPaginationPageTitle(pageNumber) {
-        return `Page ${pageNumber} | ${title}`
-      },
-      ...resolvePaginationConfig(indexPath, pagination)
+      ...resolvePaginationConfig(title, indexPath, pagination)
     })
   }
 

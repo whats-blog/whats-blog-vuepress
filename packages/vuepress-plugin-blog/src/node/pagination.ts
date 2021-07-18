@@ -12,9 +12,19 @@ import {
 } from './interface/pagination'
 import { getIntervals, parseDate } from './util'
 
-export function resolvePaginationConfig(indexPath: string, userPaginationConfig: PaginationConfig): PaginationConfig {
+export function resolvePaginationConfig(
+  title: string,
+  indexPath: string,
+  userPaginationConfig: PaginationConfig
+): PaginationConfig {
   const defaultPaginationConfig: PaginationConfig = {
     lengthPerPage: 5,
+    getPaginationPageTitle(index) {
+      if (index === 0) {
+        return title
+      }
+      return `Page ${index + 1} | ${title}`
+    },
     getPaginationPageUrl(index) {
       if (index === 0) {
         return indexPath
@@ -63,21 +73,18 @@ export async function registerPaginations(paginations: InternalPagination[], app
       })
     }
 
-    if (pagination.pages.length > 1) {
-      const paginationPageInfos: ExtraPage[] = pagination.pages.slice(1).map(({ path }, index) => {
-        const pageNumber = index + 2
-        return {
-          path,
-          frontmatter: {
-            title: (getPaginationPageTitle as GetPaginationPageTitle)(pageNumber, id),
-            id
-          }
+    const paginationPageInfos: ExtraPage[] = pagination.pages.map(({ path }, index) => {
+      return {
+        path,
+        frontmatter: {
+          title: (getPaginationPageTitle as GetPaginationPageTitle)(index, id),
+          id
         }
-      })
+      }
+    })
 
-      const paginationPages = await Promise.all(paginationPageInfos.map((pageInfo) => createPage(app, pageInfo)))
-      app.pages.push(...paginationPages)
-    }
+    const paginationPages = await Promise.all(paginationPageInfos.map((pageInfo) => createPage(app, pageInfo)))
+    app.pages.push(...paginationPages)
 
     serializedPaginations.push(pagination)
   }
