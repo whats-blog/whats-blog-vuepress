@@ -5,18 +5,23 @@ import { BlogPluginOptions, DirectoryClassifier } from './interface/options'
 import { ExtraPage } from './interface/extra-page'
 import { PageEnhancer } from './interface/page-enhancer'
 import { upperFirstChar } from './util'
+import { InternalPagination, PaginationConfig } from './interface/pagination'
+import { ClassifierTypeEnum } from './interface/classifier'
+import { resolvePaginationConfig } from './pagination'
 
 export function handleOptions(options: BlogPluginOptions, app: App) {
   let { directories = [] } = options
 
-  const { extraPages: directoryExtraPages, pageEnhancers: directoryPageEnhancer } = handleDirectoryClassification(
-    directories,
-    app.options
-  )
+  const {
+    extraPages: directoryExtraPages,
+    pageEnhancers: directoryPageEnhancer,
+    paginations: directoryPaginations
+  } = handleDirectoryClassification(directories, app.options)
 
   return {
     extraPages: [...directoryExtraPages],
-    pageEnhancers: [...directoryPageEnhancer]
+    pageEnhancers: [...directoryPageEnhancer],
+    paginations: [...directoryPaginations]
   }
 }
 
@@ -42,13 +47,15 @@ function handleDirectoryClassification(
 
   const extraPages: ExtraPage[] = []
   const pageEnhancers: PageEnhancer[] = []
+  const paginations: InternalPagination[] = []
 
   for (let directory of directories) {
     const {
       id,
       dirname,
       path: indexPath = `/${directory.id}/`,
-      itemPermalink = '/:year/:month/:day/:slug.html'
+      itemPermalink = '/:year/:month/:day/:slug.html',
+      pagination = {} as PaginationConfig
     } = directory
 
     const { title = upperFirstChar(id) } = directory
@@ -64,13 +71,25 @@ function handleDirectoryClassification(
 
     pageEnhancers.push({
       filter(filePath) {
-        return Boolean(filePath) && filePath.startsWith(`${dirname}/`)
+        return Boolean(filePath) && filePath!.startsWith(`${dirname}/`)
       },
       frontmatter: {
         permalinkPattern: itemPermalink
+      },
+      data: {
+        id
       }
+    })
+
+    paginations.push({
+      id,
+      classifierType: ClassifierTypeEnum.DIRECTORY,
+      getPaginationPageTitle(pageNumber) {
+        return `Page ${pageNumber} | ${title}`
+      },
+      ...resolvePaginationConfig(indexPath, pagination)
     })
   }
 
-  return { extraPages, pageEnhancers }
+  return { extraPages, pageEnhancers, paginations }
 }
