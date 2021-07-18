@@ -82,7 +82,8 @@ export async function registerPaginations(paginations: InternalPagination[], app
           title: (getPaginationPageTitle as GetPaginationPageTitle)(index, id),
           pagination: {
             type: 'page',
-            id
+            id,
+            index
           }
         }
       }
