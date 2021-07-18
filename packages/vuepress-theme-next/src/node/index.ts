@@ -3,20 +3,20 @@ import { path } from '@vuepress/utils'
 const nextTheme = (options) => {
   return {
     name: '@whats-blog/vuepress-theme-next',
-    layouts: {
-      Layout: path.resolve(__dirname, '../client/layouts/Layout.vue'),
-      404: path.resolve(__dirname, '../client/layouts/404.vue')
-    },
+    layouts: path.resolve(__dirname, '../client/layouts/'),
     plugins: [
-      [require.resolve('@whats-blog/vuepress-plugin-blog'), {
-        directories: [
-          {
-            id: 'post',
-            dirname: '_posts',
-            path: '/',
-          },
-        ],
-      }],
+      [
+        require.resolve('@whats-blog/vuepress-plugin-blog'),
+        {
+          directories: [
+            {
+              id: 'post',
+              dirname: '_posts',
+              path: '/'
+            }
+          ]
+        }
+      ],
       [require.resolve('@vuepress/plugin-theme-data'), { themeData: options }]
     ]
   }
