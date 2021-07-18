@@ -1,4 +1,4 @@
-import type { BlogPage } from '../../types/vuepress-blog'
+import type { Page } from '@vuepress/core'
 import { ClassifierTypeEnum } from './classifier'
 
 /**
@@ -15,9 +15,9 @@ interface LinkText {
   nextText: string
 }
 
-export type PageFilter = (page: BlogPage, id: string) => boolean
+export type PageFilter = (page: Page, id: string) => boolean
 
-export type PageSorter = (prev: BlogPage, next: BlogPage) => boolean | number
+export type PageSorter = (prev: Page, next: Page) => boolean | number
 
 export type GetPaginationPageUrl = (index: number) => string
 

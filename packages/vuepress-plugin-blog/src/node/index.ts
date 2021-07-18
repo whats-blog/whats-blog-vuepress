@@ -1,5 +1,4 @@
 import type { App } from '@vuepress/core'
-import { createPage } from '@vuepress/core'
 
 import { handleOptions } from './handle-options'
 import { SerializedPagination } from './interface/pagination'
@@ -8,7 +7,7 @@ import { registerPaginations } from './pagination'
 const TEMP_MODULE_DIR = '@whats-blog/vuepress-plugin-blog'
 
 const blogPlugin = (options, app: App) => {
-  const { extraPages, pageEnhancers, paginations } = handleOptions(options, app)
+  const { pageEnhancers, paginations } = handleOptions(options, app)
   const paginationPages: SerializedPagination[] = []
   return {
     name: '@whats-blog/vuepress-plugin-blog',
@@ -23,20 +22,6 @@ const blogPlugin = (options, app: App) => {
       return { frontmatter }
     },
     async onInitialized() {
-      const { pages } = app
-      for (let pageInfo of extraPages) {
-        const extraPage = await createPage(app, pageInfo)
-        pages.push(extraPage)
-      }
-      for (let page of pages) {
-        const data = {}
-        pageEnhancers.forEach(({ filter, data: enhancerData }) => {
-          if (filter(page.filePathRelative)) {
-            Object.assign(data, enhancerData)
-          }
-        })
-        Object.assign(page, data)
-      }
       paginationPages.push(...(await registerPaginations(paginations, app)))
     },
     async onPrepared() {

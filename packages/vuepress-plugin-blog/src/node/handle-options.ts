@@ -12,14 +12,12 @@ import { resolvePaginationConfig } from './pagination'
 export function handleOptions(options: BlogPluginOptions, app: App) {
   let { directories = [] } = options
 
-  const {
-    extraPages: directoryExtraPages,
-    pageEnhancers: directoryPageEnhancer,
-    paginations: directoryPaginations
-  } = handleDirectoryClassification(directories, app.options)
+  const { pageEnhancers: directoryPageEnhancer, paginations: directoryPaginations } = handleDirectoryClassification(
+    directories,
+    app.options
+  )
 
   return {
-    extraPages: [...directoryExtraPages],
     pageEnhancers: [...directoryPageEnhancer],
     paginations: [...directoryPaginations]
   }
@@ -45,7 +43,6 @@ function handleDirectoryClassification(
     return false
   })
 
-  const extraPages: ExtraPage[] = []
   const pageEnhancers: PageEnhancer[] = []
   const paginations: InternalPagination[] = []
 
@@ -65,10 +62,11 @@ function handleDirectoryClassification(
         return Boolean(filePath) && filePath!.startsWith(`${dirname}/`)
       },
       frontmatter: {
-        permalinkPattern: itemPermalink
-      },
-      data: {
-        id
+        permalinkPattern: itemPermalink,
+        pagination: {
+          type: 'post',
+          id
+        }
       }
     })
 
@@ -79,5 +77,5 @@ function handleDirectoryClassification(
     })
   }
 
-  return { extraPages, pageEnhancers, paginations }
+  return { pageEnhancers, paginations }
 }

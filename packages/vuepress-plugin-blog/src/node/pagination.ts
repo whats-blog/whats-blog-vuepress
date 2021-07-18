@@ -1,6 +1,5 @@
-import type { App } from '@vuepress/core'
+import type { App, Page } from '@vuepress/core'
 import { createPage } from '@vuepress/core'
-import { BlogPage } from '../types/vuepress-blog'
 import { ExtraPage } from './interface/extra-page'
 import {
   GetPaginationPageTitle,
@@ -31,10 +30,13 @@ export function resolvePaginationConfig(
       }
       return `${indexPath}page/${index + 1}`
     },
-    filter(page: BlogPage, id: string) {
-      return page.id === id
+    filter(page: Page, id: string) {
+      if (page.frontmatter.pagination) {
+        return (page.frontmatter.pagination as any).id === id
+      }
+      return false
     },
-    sorter(prev: BlogPage, next: BlogPage) {
+    sorter(prev: Page, next: Page) {
       const prevDate = parseDate(prev.frontmatter.date!)
       const nextDate = parseDate(next.frontmatter.date!)
       return prevDate - nextDate
@@ -58,7 +60,7 @@ export async function registerPaginations(paginations: InternalPagination[], app
   } of paginations) {
     const { pages: sourcePages } = app
 
-    const pages = sourcePages.filter((page) => (filter as PageFilter)(page as BlogPage, id))
+    const pages = sourcePages.filter((page) => (filter as PageFilter)(page, id))
     const intervals = getIntervals(pages.length, lengthPerPage!)
 
     const pagination: SerializedPagination = {
@@ -78,7 +80,10 @@ export async function registerPaginations(paginations: InternalPagination[], app
         path,
         frontmatter: {
           title: (getPaginationPageTitle as GetPaginationPageTitle)(index, id),
-          id
+          pagination: {
+            type: 'page',
+            id
+          }
         }
       }
     })
