@@ -1,14 +1,30 @@
-import type { App } from '@vuepress/core'
+import type { App, AppOptions, BundlerConfig, ThemeConfig } from '@vuepress/core'
 import { chalk, fs, logger, path } from '@vuepress/utils'
 
-import { BlogPluginOptions } from './interface/options'
+import { BlogPluginOptions, DirectoryClassifier } from './interface/options'
 import { ExtraPage } from './interface/extra-page'
 import { PageEnhancer } from './interface/page-enhancer'
 import { upperFirstChar } from './util'
 
 export function handleOptions(options: BlogPluginOptions, app: App) {
   let { directories = [] } = options
-  const { source: sourceDir } = app.options
+
+  const { extraPages: directoryExtraPages, pageEnhancers: directoryPageEnhancer } = handleDirectoryClassification(
+    directories,
+    app.options
+  )
+
+  return {
+    extraPages: [...directoryExtraPages],
+    pageEnhancers: [...directoryPageEnhancer]
+  }
+}
+
+function handleDirectoryClassification(
+  directories: DirectoryClassifier[],
+  appOption: AppOptions<ThemeConfig, BundlerConfig>
+) {
+  const { source: sourceDir } = appOption
 
   directories = directories.filter((directory) => {
     const targetDir = path.join(sourceDir, directory.path)
@@ -56,8 +72,5 @@ export function handleOptions(options: BlogPluginOptions, app: App) {
     })
   }
 
-  return {
-    extraPages,
-    pageEnhancers
-  }
+  return { extraPages, pageEnhancers }
 }
