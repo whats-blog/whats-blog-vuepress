@@ -2,7 +2,6 @@ import type { App, AppOptions, BundlerConfig, ThemeConfig } from '@vuepress/core
 import { chalk, fs, logger, path } from '@vuepress/utils'
 
 import { BlogPluginOptions, DirectoryClassifier } from './interface/options'
-import { ExtraPage } from './interface/extra-page'
 import { PageEnhancer } from './interface/page-enhancer'
 import { upperFirstChar } from './util'
 import { InternalPagination, PaginationConfig } from './interface/pagination'
