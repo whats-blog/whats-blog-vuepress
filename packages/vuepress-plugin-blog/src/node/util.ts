@@ -21,3 +21,21 @@ export function getIntervals(max: number, per: number) {
 export function parseDate(date: string | Date) {
   return date instanceof Date ? date.getTime() : Date.parse(date)
 }
+
+/**
+ * Transform map to string.
+ *
+ * @param map
+ * @param unstringedKeys Set to ture to force all field value to not be stringified.
+ */
+export function mapToString(map: object, unstringedKeys: string[] | boolean = []) {
+  const keys = unstringedKeys
+  let str = `{\n`
+  for (const key of Object.keys(map)) {
+    str += `  ${key}: ${
+      keys === true || (Array.isArray(keys) && keys.includes(key)) ? map[key] : JSON.stringify(map[key])
+    },\n`
+  }
+  str += '}'
+  return str
+}

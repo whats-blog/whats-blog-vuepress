@@ -2,7 +2,8 @@ import type { App } from '@vuepress/core'
 
 import { handleOptions } from './handle-options'
 import { SerializedPagination } from './interface/pagination'
-import { registerPaginations } from './pagination'
+import { registerPaginations, serializePaginations } from './pagination'
+import { parseDate } from './util'
 
 const TEMP_MODULE_DIR = '@whats-blog/vuepress-plugin-blog'
 
@@ -25,9 +26,10 @@ const blogPlugin = (options, app: App) => {
       paginationPages.push(...(await registerPaginations(paginations, app)))
     },
     async onPrepared() {
+      await app.writeTemp(`${TEMP_MODULE_DIR}/util.js`, `export ${parseDate.toString()}`)
       await app.writeTemp(
         `${TEMP_MODULE_DIR}/pagination.js`,
-        `export const paginations = ${JSON.stringify(paginationPages)}`
+        `export const paginations = ${serializePaginations(paginationPages, ['filter', 'sorter'])}`
       )
     }
   }

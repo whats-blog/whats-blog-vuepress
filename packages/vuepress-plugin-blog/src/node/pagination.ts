@@ -9,7 +9,7 @@ import {
   PaginationConfig,
   SerializedPagination
 } from './interface/pagination'
-import { getIntervals, parseDate } from './util'
+import { getIntervals, mapToString } from './util'
 
 export function resolvePaginationConfig(
   title: string,
@@ -31,12 +31,14 @@ export function resolvePaginationConfig(
       return `${indexPath}page/${index + 1}`
     },
     filter: (page: Page, id: string) => {
-      if (page.frontmatter.pagination) {
-        return (page.frontmatter.pagination as any).id === id
+      const pagination: any = page.frontmatter.pagination
+      if (pagination) {
+        return pagination.id === id && pagination.type === 'post'
       }
       return false
     },
     sorter: (prev: Page, next: Page) => {
+      const { parseDate } = require('./util')
       const prevDate = parseDate(prev.frontmatter.date!)
       const nextDate = parseDate(next.frontmatter.date!)
       return prevDate - nextDate
@@ -95,4 +97,8 @@ export async function registerPaginations(paginations: InternalPagination[], app
     serializedPaginations.push(pagination)
   }
   return serializedPaginations
+}
+
+export function serializePaginations(paginations: SerializedPagination[], unstringedKeys: string[] = []) {
+  return `[${paginations.map((p) => mapToString(p, unstringedKeys)).join(',\n')}]`
 }
