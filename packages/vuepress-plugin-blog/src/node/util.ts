@@ -10,7 +10,7 @@ export function getIntervals(max: number, per: number) {
   const arr = [...new Array(count)]
   return arr.map((_, index) => {
     const start = index * per
-    const end = (index + 1) * per - 1
+    const end = start + per
     return [start, Math.min(end, max)]
   })
 }
