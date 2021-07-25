@@ -1,3 +1,3 @@
 declare module '@temp/@whats-blog/vuepress-plugin-blog/pagination' {
-  export const paginations: any
+  export const paginations: any[]
 }

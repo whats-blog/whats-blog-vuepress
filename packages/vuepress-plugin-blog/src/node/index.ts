@@ -1,4 +1,5 @@
 import type { App } from '@vuepress/core'
+import { path } from '@vuepress/utils'
 
 import { handleOptions } from './handle-options'
 import { SerializedPagination } from './interface/pagination'
@@ -13,6 +14,7 @@ const blogPlugin = (options, app: App) => {
   return {
     name: '@whats-blog/vuepress-plugin-blog',
     plugins: [require.resolve('@whats-blog/vuepress-plugin-pages')],
+    clientAppEnhanceFiles: path.resolve(__dirname, '../client/client-app-enhance.js'),
     extendsPageOptions(filePath: string) {
       const frontmatter = {}
       pageEnhancers.forEach(({ filter, frontmatter: enhancerFrontmatter }) => {
