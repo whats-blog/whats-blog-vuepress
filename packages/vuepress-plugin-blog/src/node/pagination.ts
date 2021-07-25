@@ -28,7 +28,7 @@ export function resolvePaginationConfig(
       if (index === 0) {
         return indexPath
       }
-      return `${indexPath}page/${index + 1}`
+      return `${indexPath}page/${index + 1}/`
     },
     filter: (page: Page, id: string) => {
       const pagination: any = page.frontmatter.pagination
