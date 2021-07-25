@@ -10,8 +10,7 @@
     "build": "tsc --build",
     "clean": "pnpm clean --filter @whats-blog/* --parallel",
     "copy": "pnpm copy --filter @whats-blog/* --parallel",
-    "copy:watch": "pnpm copy --filter @whats-blog/* --parallel -- --watch",
-    "dev": "pnpm copy:watch & pnpm build -- --watch & pnpm blog:dev"
+    "copy:watch": "pnpm copy --filter @whats-blog/* --parallel -- --watch"
   },
   "license": "MIT",
   "devDependencies": {
