@@ -27,8 +27,10 @@ export default defineClientAppEnhance(({ app }) => {
           return {
             hasPrev: index > 0,
             prevLink: (pages[index - 1] || {}).path,
+            prevText: (pages[index - 1] || {}).title,
             hasNext: index + 1 < pages.length,
-            nextLink: (pages[index + 1] || {}).path
+            nextLink: (pages[index + 1] || {}).path,
+            nextText: (pages[index + 1] || {}).title
           }
         }
       }
