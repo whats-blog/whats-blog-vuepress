@@ -8,9 +8,10 @@
     "blog:dev": "vuepress dev blog",
     "blog:build": "pnpm clean && pnpm build && pnpm copy && vuepress build blog",
     "build": "tsc --build",
+    "build:watch": "pnpm build -- --watch",
     "clean": "pnpm clean --filter @whats-blog/* --parallel",
     "copy": "pnpm copy --filter @whats-blog/* --parallel",
-    "copy:watch": "pnpm copy --filter @whats-blog/* --parallel -- --watch"
+    "copy:watch": "pnpm copy -- -- --watch"
   },
   "license": "MIT",
   "devDependencies": {
