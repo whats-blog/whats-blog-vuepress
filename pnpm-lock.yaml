@@ -34,12 +34,14 @@ importers:
   packages/vuepress-theme-next:
     specifiers:
       '@vuepress/client': ^2.0.0-beta.15
+      '@vuepress/plugin-prismjs': 2.0.0-beta.15
       '@vuepress/plugin-theme-data': 2.0.0-beta.15
       '@whats-blog/vuepress-plugin-blog': 0.0.1
       tailwindcss: ^2.2.7
       vue: ^3.0.0
     dependencies:
       '@vuepress/client': 2.0.0-beta.15
+      '@vuepress/plugin-prismjs': 2.0.0-beta.15
       '@vuepress/plugin-theme-data': 2.0.0-beta.15
       '@whats-blog/vuepress-plugin-blog': link:../vuepress-plugin-blog
       tailwindcss: 2.2.7
@@ -468,7 +470,6 @@ packages:
       prismjs: 1.23.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@vuepress/plugin-theme-data/2.0.0-beta.15:
     resolution: {integrity: sha512-XISuIYsfbQjlISuumw1NFlsTp0EHxiXq/Mchrq8urLl2t0C4HBlVKfU1iUmbzXGsJKoF1LmGGMPa4hCaFxgFNg==}
@@ -1033,7 +1034,6 @@ packages:
       good-listener: 1.2.2
       select: 1.1.2
       tiny-emitter: 2.1.0
-    dev: true
     optional: true
 
   /clone-deep/4.0.1:
@@ -1371,7 +1371,6 @@ packages:
 
   /delegate/3.2.0:
     resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==}
-    dev: true
     optional: true
 
   /depd/1.1.2:
@@ -1939,7 +1938,6 @@ packages:
     resolution: {integrity: sha1-1TswzfkxPf+33JoNR3CWqm0UXFA=}
     dependencies:
       delegate: 3.2.0
-    dev: true
     optional: true
 
   /graceful-fs/4.2.6:
@@ -3236,7 +3234,6 @@ packages:
     resolution: {integrity: sha512-c29LVsqOaLbBHuIbsTxaKENh1N2EQBOHaWv7gkHN4dgRbxSREqDnDbtFJYdpPauS4YCplMSNCABQ6Eeor69bAA==}
     optionalDependencies:
       clipboard: 2.0.8
-    dev: true
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -3494,7 +3491,6 @@ packages:
 
   /select/1.1.2:
     resolution: {integrity: sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=}
-    dev: true
     optional: true
 
   /selfsigned/1.10.11:
@@ -3887,7 +3883,6 @@ packages:
 
   /tiny-emitter/2.1.0:
     resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
-    dev: true
     optional: true
 
   /tmp/0.2.1:

@@ -18,6 +18,7 @@ const nextTheme = (options) => {
           ]
         }
       ],
+      [require.resolve('@vuepress/plugin-prismjs')],
       [require.resolve('@vuepress/plugin-theme-data'), { themeData: options }]
     ]
   }
