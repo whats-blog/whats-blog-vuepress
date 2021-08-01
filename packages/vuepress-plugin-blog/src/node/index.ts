@@ -15,8 +15,8 @@ const blogPlugin = (options, app: App) => {
     name: '@whats-blog/vuepress-plugin-blog',
     plugins: [require.resolve('@whats-blog/vuepress-plugin-pages')],
     clientAppEnhanceFiles: path.resolve(__dirname, '../client/client-app-enhance.js'),
-    extendsPageOptions(filePath: string) {
-      const frontmatter = {}
+    extendsPageOptions({ filePath, frontmatter: ofm }) {
+      const frontmatter = ofm || {}
       pageEnhancers.forEach(({ filter, frontmatter: enhancerFrontmatter }) => {
         if (filter(filePath)) {
           Object.assign(frontmatter, enhancerFrontmatter)

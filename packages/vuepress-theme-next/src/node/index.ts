@@ -18,6 +18,7 @@ const nextTheme = (options) => {
           ]
         }
       ],
+      [require.resolve('@whats-blog/vuepress-plugin-pages')],
       [require.resolve('@vuepress/plugin-prismjs')],
       [require.resolve('@vuepress/plugin-theme-data'), { themeData: options }]
     ]
