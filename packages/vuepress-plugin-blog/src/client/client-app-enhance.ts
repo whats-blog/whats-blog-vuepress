@@ -20,7 +20,10 @@ export default defineClientAppEnhance(({ app }) => {
             prevLink: (paginationInfo.pages[pagination.index - 1] || {}).path,
             hasNext: pagination.index + 1 < paginationInfo.pages.length,
             nextLink: (paginationInfo.pages[pagination.index + 1] || {}).path,
-            pages: pages.slice(...paginationInfo.pages[pagination.index].interval)
+            pages: paginationInfo.pages.map((item) => {
+              return { path: item.path }
+            }),
+            posts: pages.slice(...paginationInfo.pages[pagination.index].interval)
           }
         } else if (pagination.type === 'post') {
           const index = pages.findIndex((item) => item.key === this.$page.key)
