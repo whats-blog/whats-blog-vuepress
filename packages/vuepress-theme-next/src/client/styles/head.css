@@ -1,0 +1,42 @@
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl pb-1.5 border-b border-gray-300;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold -mt-16 pt-20;
+
+  a.header-anchor {
+    @apply float-left text-green-500 opacity-0 -ml-6 mr-1;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+
+  &:hover {
+    a.header-anchor {
+      @apply opacity-100;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.post-nav {
+  @apply py-6;
+
+  a {
+    @apply text-green-500;
+  }
+
+  .next {
+    @apply float-right;
+  }
+}

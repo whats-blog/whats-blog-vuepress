@@ -1,51 +1,41 @@
 <template>
-  <div class="theme-container">
-    <div class="content-container">
-      <Content />
-    </div>
-    <div class="side-container">
-      <Sidebar />
+  <div>
+    <Header></Header>
+    <div class="content-wrapper">
+      <div class="content-container">
+        <Page v-if="contentType === 'page'" />
+        <Post v-else />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
+  import { computed, defineComponent } from 'vue'
+  import { usePageData } from '@vuepress/client'
 
-  import Sidebar from '../components/Sidebar.vue'
+  import Page from '../components/Page.vue'
+  import Post from '../components/Post.vue'
+  import Header from '../components/Header.vue'
 
   export default defineComponent({
     name: 'Layout',
-
     components: {
-      Sidebar
+      Page,
+      Post,
+      Header
+    },
+    setup() {
+      const pageData = usePageData()
+      const contentType = computed(() => {
+        if (pageData.value.frontmatter.pagination) {
+          return pageData.value.frontmatter.pagination.type
+        }
+        return 'post'
+      })
+      return {
+        contentType
+      }
     }
   })
 </script>
-
-<style scoped>
-  .theme-container {
-    width: 80%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-  }
-
-  .content-container {
-    flex: 1;
-    background-color: white;
-    padding: 64px;
-    margin-right: 20px;
-  }
-
-  .side-container {
-    width: 240px;
-    background-color: white;
-  }
-</style>
-
-<style>
-  body {
-    background-color: #f5f7f9;
-  }
-</style>

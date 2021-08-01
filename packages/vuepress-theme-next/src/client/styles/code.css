@@ -1,0 +1,214 @@
+code {
+  @apply bg-gray-200 rounded-sm font-mono text-sm px-1 py-0.5;
+}
+
+div[class*='language-'] {
+  @apply bg-gray-800 relative rounded-md flex flex-row-reverse my-2;
+
+  pre[class*='language-'] {
+    @apply flex-1 overflow-x-auto pl-4 py-4 pr-6;
+
+    code {
+      @apply bg-transparent text-white;
+    }
+  }
+
+  &.line-numbers-mode {
+    .line-numbers {
+      @apply text-gray-400 border-r-2 border-gray-900 pt-4 w-12 text-center;
+    }
+  }
+
+  &::before {
+    @apply absolute top-3 right-4 text-gray-400 text-xs;
+  }
+
+  &.ext-c::before {
+    content: 'c';
+  }
+
+  &.ext-cpp::before {
+    content: 'cpp';
+  }
+
+  &.ext-cs::before {
+    content: 'cs';
+  }
+
+  &.ext-css::before {
+    content: 'css';
+  }
+
+  &.ext-dart::before {
+    content: 'dart';
+  }
+
+  &.ext-docker::before {
+    content: 'docker';
+  }
+
+  &.ext-fs::before {
+    content: 'fs';
+  }
+
+  &.ext-go::before {
+    content: 'go';
+  }
+
+  &.ext-html::before {
+    content: 'html';
+  }
+
+  &.ext-java::before {
+    content: 'java';
+  }
+
+  &.ext-js::before {
+    content: 'js';
+  }
+
+  &.ext-json::before {
+    content: 'json';
+  }
+
+  &.ext-kt::before {
+    content: 'kt';
+  }
+
+  &.ext-less::before {
+    content: 'less';
+  }
+
+  &.ext-makefile::before {
+    content: 'makefile';
+  }
+
+  &.ext-md::before {
+    content: 'md';
+  }
+
+  &.ext-php::before {
+    content: 'php';
+  }
+
+  &.ext-py::before {
+    content: 'py';
+  }
+
+  &.ext-rb::before {
+    content: 'rb';
+  }
+
+  &.ext-rs::before {
+    content: 'rs';
+  }
+
+  &.ext-sass::before {
+    content: 'sass';
+  }
+
+  &.ext-scss::before {
+    content: 'scss';
+  }
+
+  &.ext-sh::before {
+    content: 'sh';
+  }
+
+  &.ext-styl::before {
+    content: 'styl';
+  }
+
+  &.ext-ts::before {
+    content: 'ts';
+  }
+
+  &.ext-toml::before {
+    content: 'toml';
+  }
+
+  &.ext-vue::before {
+    content: 'vue';
+  }
+
+  &.ext-yml::before {
+    content: 'yml';
+  }
+
+  /* prism-tomorrow */
+  .token {
+    &.comment,
+    &.block-comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: #999;
+    }
+
+    &.punctuation {
+      color: #ccc;
+    }
+
+    &.tag,
+    &.attr-name,
+    &.namespace,
+    &.deleted {
+      color: #e2777a;
+    }
+
+    &.function-name {
+      color: #6196cc;
+    }
+
+    &.boolean,
+    &.number,
+    &.function {
+      color: #f08d49;
+    }
+
+    &.property,
+    &.class-name,
+    &.constant,
+    &.symbol {
+      color: #f8c555;
+    }
+
+    &.selector,
+    &.important,
+    &.atrule,
+    &.keyword,
+    &.builtin {
+      color: #cc99cd;
+    }
+
+    &.string,
+    &.char,
+    &.attr-value,
+    &.regex,
+    &.variable {
+      color: #7ec699;
+    }
+
+    &.operator,
+    &.entity,
+    &.url {
+      color: #67cdcc;
+    }
+
+    &.important,
+    &.bold {
+      font-weight: bold;
+    }
+    &.italic {
+      font-style: italic;
+    }
+
+    &.entity {
+      cursor: help;
+    }
+
+    &.inserted {
+      color: green;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.post-list {
+  li {
+    @apply py-1;
+  }
+
+  .title {
+    @apply text-lg underline;
+
+    &:hover {
+      @apply text-green-500;
+    }
+  }
+
+  .date {
+    @apply ml-4;
+  }
+}
+
+.page-nav {
+  @apply flex mt-6;
+
+  .nav-item {
+    @apply py-0.5 px-4;
+
+    &:not(.router-link-active):hover {
+      @apply text-green-500;
+    }
+
+    &.router-link-active {
+      @apply bg-green-500 text-white;
+    }
+  }
+}
