@@ -2,6 +2,10 @@ const { description } = require('../../package')
 
 module.exports = {
   /**
+   * Ref：https://vuepress.github.io/reference/config.html#base
+   */
+  base: '/whats-blog-vuepress/',
+  /**
    * Ref：https://vuepress.github.io/reference/config.html#title
    */
   title: 'VuePress Blog Example',

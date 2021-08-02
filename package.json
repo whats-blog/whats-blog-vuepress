@@ -11,7 +11,8 @@
     "build:watch": "pnpm build -- --watch",
     "clean": "pnpm clean --filter @whats-blog/* --parallel",
     "copy": "pnpm copy --filter @whats-blog/* --parallel",
-    "copy:watch": "pnpm copy -- -- --watch"
+    "copy:watch": "pnpm copy -- -- --watch",
+    "deploy": "./scripts/deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
@@ -30,7 +31,7 @@
     }
   },
   "lint-staged": {
-    "*.{html,css,js,vue,json}": [
+    "*.{html,css,js,vue,json,yml}": [
       "prettier --write"
     ],
     "*.ts": [
