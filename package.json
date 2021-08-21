@@ -2,17 +2,19 @@
   "name": "whats-blog-vuepress",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "repository": "https://github.com/whats-blog/whats-blog-vuepress",
   "scripts": {
     "blog:dev": "vuepress dev blog",
     "blog:build": "pnpm clean && pnpm build && pnpm copy && vuepress build blog",
     "build": "tsc --build",
+    "build:lib": "pnpm build && pnpm copy",
     "build:watch": "pnpm build -- --watch",
     "clean": "pnpm clean --filter @whats-blog/* --parallel",
     "copy": "pnpm copy --filter @whats-blog/* --parallel",
     "copy:watch": "pnpm copy -- -- --watch",
-    "deploy": "./scripts/deploy.sh"
+    "deploy": "./scripts/deploy.sh",
+    "publish": "pnpm build:lib && ./scripts/publish.sh"
   },
   "license": "MIT",
   "devDependencies": {
@@ -37,5 +39,8 @@
     "*.ts": [
       "prettier --parser typescript --write"
     ]
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }

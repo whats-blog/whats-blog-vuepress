@@ -10,5 +10,8 @@
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf lib *.tsbuildinfo"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
 }

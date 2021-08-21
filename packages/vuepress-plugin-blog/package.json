@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "@whats-blog/vuepress-plugin-pages": "0.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
