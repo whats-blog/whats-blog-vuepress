@@ -19,6 +19,9 @@ export const nextTheme = (options) => {
         }
       ],
       [require.resolve('@whats-blog/vuepress-plugin-pages')],
+      [require.resolve('@vuepress/plugin-container'), { type: 'tip' }],
+      [require.resolve('@vuepress/plugin-container'), { type: 'warning' }],
+      [require.resolve('@vuepress/plugin-container'), { type: 'danger' }],
       [require.resolve('@vuepress/plugin-prismjs')],
       [require.resolve('@vuepress/plugin-theme-data'), { themeData: options }]
     ]

@@ -31,3 +31,29 @@ ul {
 article a {
   @apply text-green-500 hover:underline;
 }
+
+.custom-container {
+  &.tip,
+  &.warning,
+  &.danger {
+    @apply border-l-8 border-solid py-1 px-6 my-4;
+  }
+
+  &.tip {
+    @apply border-green-500 bg-gray-100 text-gray-600;
+    .custom-container-title {
+      @apply text-green-600;
+    }
+  }
+
+  &.warning {
+    @apply border-yellow-400 bg-yellow-100 text-yellow-800;
+    .custom-container-title {
+      @apply text-yellow-500;
+    }
+  }
+
+  .custom-container-title {
+    @apply font-semibold;
+  }
+}

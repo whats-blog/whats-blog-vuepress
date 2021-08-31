@@ -34,6 +34,7 @@ importers:
   packages/vuepress-theme-next:
     specifiers:
       '@vuepress/client': 2.0.0-beta.24
+      '@vuepress/plugin-container': 2.0.0-beta.24
       '@vuepress/plugin-prismjs': 2.0.0-beta.24
       '@vuepress/plugin-theme-data': 2.0.0-beta.24
       '@whats-blog/vuepress-plugin-blog': 0.0.1
@@ -41,6 +42,7 @@ importers:
       tailwindcss: ^2.2.7
     dependencies:
       '@vuepress/client': 2.0.0-beta.24
+      '@vuepress/plugin-container': 2.0.0-beta.24
       '@vuepress/plugin-prismjs': 2.0.0-beta.24
       '@vuepress/plugin-theme-data': 2.0.0-beta.24
       '@whats-blog/vuepress-plugin-blog': link:../vuepress-plugin-blog
@@ -439,7 +441,6 @@ packages:
       markdown-it-container: 3.0.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@vuepress/plugin-git/2.0.0-beta.24:
     resolution: {integrity: sha512-4aQ0ZNWeX7zm0UUAZdcIliJAXyrLGfvNCOUVyEJW9Gb/o0fE8b/jZTkasAmd/+0v3ABNySd2LdUAV+xZNAoRSg==}
@@ -2606,7 +2607,6 @@ packages:
 
   /markdown-it-container/3.0.0:
     resolution: {integrity: sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==}
-    dev: true
 
   /markdown-it-emoji/2.0.0:
     resolution: {integrity: sha512-39j7/9vP/CPCKbEI44oV8yoPJTpvfeReTn/COgRhSpNrjWF3PfP/JUxxB0hxV6ynOY8KH8Y8aX9NMDdo6z+6YQ==}
