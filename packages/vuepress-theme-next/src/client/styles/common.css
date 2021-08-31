@@ -23,3 +23,11 @@ body {
 p {
   @apply my-3;
 }
+
+ul {
+  @apply list-disc pl-5;
+}
+
+article a {
+  @apply text-green-500 hover:underline;
+}
