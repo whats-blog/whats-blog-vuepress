@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwhats_blog_vuepress=self.webpackChunkwhats_blog_vuepress||[]).push([[895],{2895:(e,s,u)=>{u.r(s),u.d(s,{default:()=>r});var n=u(7951);const r={render:function(e,s){return(0,n.wg)(),(0,n.iD)("div",null,"404 Not Found")}}}}]);
