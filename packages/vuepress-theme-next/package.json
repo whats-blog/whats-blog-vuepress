@@ -12,10 +12,10 @@
     "copy": "cpx \"src/**/*.{vue,css}\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.25",
-    "@vuepress/plugin-container": "2.0.0-beta.25",
-    "@vuepress/plugin-prismjs": "2.0.0-beta.25",
-    "@vuepress/plugin-theme-data": "2.0.0-beta.25",
+    "@vuepress/client": "2.0.0-beta.26",
+    "@vuepress/plugin-container": "2.0.0-beta.26",
+    "@vuepress/plugin-prismjs": "2.0.0-beta.26",
+    "@vuepress/plugin-theme-data": "2.0.0-beta.26",
     "@whats-blog/vuepress-plugin-blog": "0.0.1",
     "@whats-blog/vuepress-plugin-pages": "0.0.1",
     "tailwindcss": "^2.2.7"
